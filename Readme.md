@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Mariya Turmasova](https://up.htmlacademy.ru/javascript/20/user/1067017).
-* Наставник: `Неизвестно`.
+* Наставник: [Ivan Chernobuk](https://htmlacademy.ru/profile/id237614).
 
 ---
 
