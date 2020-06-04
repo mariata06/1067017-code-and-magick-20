@@ -22,9 +22,9 @@ for (var i = 0; i < 4; i++) {
     name: randomElement(WIZARDS_NAMES) + ' ' + randomElement(WIZARDS_SURNAMES),
     coatColor: randomElement(COAT_COLOR),
     eyesColor: randomElement(EYES_COLOR)
-  }
+  };
   wizards.push(wiz);
-};
+}
 
 var renderWizard = function (wizard) {
   var wizardElement = newWizard.cloneNode(true);
