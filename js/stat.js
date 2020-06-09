@@ -25,17 +25,17 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-var renderTitle = function(ctx, string1, string2) {
+var renderTitle = function (ctx, string1, string2) {
   ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
   ctx.fillText(string1, CLOUD_X + GAP / 2, GAP);
   ctx.fillText(string2, CLOUD_X + GAP / 2, GAP * 1.5);
-}
+};
 
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP / 4, CLOUD_Y + GAP / 4, 'rgba(0, 0, 0, 0.3)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
-  renderTitle(ctx,'Ура вы победили!', 'Список результатов:');
+  renderTitle(ctx, 'Ура вы победили!', 'Список результатов:');
 
   var maxTime = getMaxElement(times);
 
