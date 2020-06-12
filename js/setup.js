@@ -12,9 +12,73 @@ var COAT_COLOR = [
 ];
 var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
 var NUMBER_WIZARDS = 4;
+var FIREBALL_COLOR = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+var setupOpen = document.querySelector('.setup-open');
+var userDialog = document.querySelector('.overlay');
+var setupClose = userDialog.querySelector('.setup-close');
+var wizardCoat = document.querySelector('.setup-wizard').querySelector('.wizard-coat');
+var wizardFireBall = document.querySelector('.setup-fireball');
+var wizardEyes = document.querySelector('.setup-wizard').querySelector('.wizard-eyes');
+var userNameInput = document.querySelector('.setup-user-name');
 
-var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
+userNameInput.addEventListener('invalid', function () {
+  if (userNameInput.validity.tooShort) {
+    userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
+  } else if (userNameInput.validity.tooLong) {
+    userNameInput.setCustomValidity('Имя не должно превышать 25-ти символов');
+  } else if (userNameInput.validity.valueMissing) {
+    userNameInput.setCustomValidity('Обязательное поле');
+  } else {
+    userNameInput.setCustomValidity('');
+  }
+});
+
+wizardCoat.addEventListener('click', function () {
+  wizardCoat.style.fill = getRandomElement(COAT_COLOR);
+});
+
+wizardFireBall.addEventListener('click', function () {
+  wizardFireBall.style.backgroundColor = getRandomElement(FIREBALL_COLOR);
+});
+
+wizardEyes.addEventListener('click', function () {
+  wizardEyes.style.fill = getRandomElement(EYES_COLOR);
+});
+
+var openPopup = function () {
+  userDialog.classList.remove('hidden');
+};
+
+var closePopup = function () {
+  userDialog.classList.add('hidden');
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    closePopup();
+  }
+});
+
+window.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
+    closePopup();
+  }
+});
+
 var listElement = userDialog.querySelector('.setup-similar-list');
 var wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
@@ -49,16 +113,16 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
-var getWizardsFragment = function (wizards) {
+var getWizardsFragment = function (wizardArray) {
   var fragment = document.createDocumentFragment();
 
-  for (var j = 0; j < wizards.length; j++) {
+  for (var j = 0; j < wizardArray.length; j++) {
 
-  fragment.appendChild(renderWizard(wizards[j]));
+    fragment.appendChild(renderWizard(wizardArray[j]));
 
   }
- return fragment;
-}
+  return fragment;
+};
 
 listElement.appendChild(getWizardsFragment(wizards));
 
