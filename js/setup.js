@@ -49,23 +49,23 @@ userNameInput.addEventListener('input', function (evt) {
   var valueLength = userNameInput.value.length;
 
   if (valueLength < MIN_NAME_LENGTH) {
-    userNameInput.setCustomValidity('Ещё ' + (MIN_NAME_LENGTH - valueLength) +' симв.');
+    userNameInput.setCustomValidity('Ещё ' + (MIN_NAME_LENGTH - valueLength) + ' симв.');
   } else if (valueLength > MAX_NAME_LENGTH) {
-    userNameInput.setCustomValidity('Удалите лишние ' + (valueLength - MIN_NAME_LENGTH) +' симв.');
+    userNameInput.setCustomValidity('Удалите лишние ' + (valueLength - MIN_NAME_LENGTH) + ' симв.');
   } else {
     userNameInput.setCustomValidity('');
   }
 });
 
-wizardCoat.addEventListener('click', function() {
+wizardCoat.addEventListener('click', function () {
   wizardCoat.style.fill = getRandomElement(COAT_COLOR);
 });
 
-wizardFireBall.addEventListener('click', function() {
+wizardFireBall.addEventListener('click', function () {
   wizardFireBall.style.backgroundColor = getRandomElement(FIREBALL_COLOR);
 });
 
-wizardEyes.addEventListener('click', function() {
+wizardEyes.addEventListener('click', function () {
   wizardEyes.style.fill = getRandomElement(EYES_COLOR);
 });
 
@@ -94,6 +94,12 @@ setupClose.addEventListener('click', function () {
 
 setupClose.addEventListener('keydown', function (evt) {
   if (evt.key === 'Enter') {
+    closePopup();
+  }
+});
+
+window.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
     closePopup();
   }
 });
@@ -155,4 +161,3 @@ var getWizardsFragment = function (wizards) {
 listElement.appendChild(getWizardsFragment(wizards));
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
-
