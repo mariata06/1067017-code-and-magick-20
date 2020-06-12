@@ -13,21 +13,7 @@ var COAT_COLOR = [
 var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
 var NUMBER_WIZARDS = 4;
 var FIREBALL_COLOR = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
-var MIN_NAME_LENGTH = 2;
-var MAX_NAME_LENGTH = 25;
-
-//var userDialog = document.querySelector('.setup');
-
-//userDialog.classList.remove('hidden');
-
-/*
-var buttonSave = form.querySelector('.setup-submit');
-var form = document.querySelector('.setup-wizard-form');
-*/
-
 var setupOpen = document.querySelector('.setup-open');
-//var setup = document.querySelector('.setup');
-
 var userDialog = document.querySelector('.overlay');
 var setupClose = userDialog.querySelector('.setup-close');
 var wizardCoat = document.querySelector('.setup-wizard').querySelector('.wizard-coat');
@@ -61,11 +47,11 @@ wizardEyes.addEventListener('click', function () {
 
 var openPopup = function () {
   userDialog.classList.remove('hidden');
-}
+};
 
 var closePopup = function () {
   userDialog.classList.add('hidden');
-}
+};
 
 setupOpen.addEventListener('click', function () {
   openPopup();
@@ -92,16 +78,7 @@ window.addEventListener('keydown', function (evt) {
     closePopup();
   }
 });
-/*
-buttonSave.addEventListener('keydown', function () {
 
-
-});
-
-form.addEventListener('submit', function () {
-  form.submit();
-});
-*/
 var listElement = userDialog.querySelector('.setup-similar-list');
 var wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
@@ -145,7 +122,7 @@ var getWizardsFragment = function (wizardArray) {
 
   }
   return fragment;
-}
+};
 
 listElement.appendChild(getWizardsFragment(wizards));
 
