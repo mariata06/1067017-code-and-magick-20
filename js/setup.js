@@ -75,7 +75,7 @@ setupClose.addEventListener('keydown', function (evt) {
 });
 
 window.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Escape') {
+  if (evt.key === 'Escape' && userNameInput !== document.activeElement) {
     closePopup();
   }
 });
