@@ -12,18 +12,83 @@ var COAT_COLOR = [
 ];
 var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
 var NUMBER_WIZARDS = 4;
+var FIREBALL_COLOR = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+var setupOpen = document.querySelector('.setup-open');
+var userDialog = document.querySelector('.overlay');
+var setupClose = userDialog.querySelector('.setup-close');
+var wizardFireBall = document.querySelector('.setup-fireball');
+var userNameInput = document.querySelector('.setup-user-name');
+var setupWizard = document.querySelector('.setup-wizard');
+var wizardCoat = setupWizard.querySelector('.wizard-coat');
+var wizardEyes = setupWizard.querySelector('.wizard-eyes');
 
-var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
+userNameInput.addEventListener('invalid', function () {
+  if (userNameInput.validity.tooShort) {
+    userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
+  } else if (userNameInput.validity.tooLong) {
+    userNameInput.setCustomValidity('Имя не должно превышать 25-ти символов');
+  } else if (userNameInput.validity.valueMissing) {
+    userNameInput.setCustomValidity('Обязательное поле');
+  } else {
+    userNameInput.setCustomValidity('');
+  }
+});
+
+wizardCoat.addEventListener('click', function () {
+  wizardCoat.style.fill = getRandomElement(COAT_COLOR);
+});
+
+wizardFireBall.addEventListener('click', function () {
+  wizardFireBall.style.backgroundColor = getRandomElement(FIREBALL_COLOR);
+});
+
+wizardEyes.addEventListener('click', function () {
+  wizardEyes.style.fill = getRandomElement(EYES_COLOR);
+});
+
+var openPopup = function () {
+  userDialog.classList.remove('hidden');
+};
+
+var closePopup = function () {
+  userDialog.classList.add('hidden');
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    closePopup();
+  }
+});
+
+window.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape' && userNameInput !== document.activeElement) {
+    closePopup();
+  }
+});
+
 var listElement = userDialog.querySelector('.setup-similar-list');
 var wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
-var getRandomElement = function (array) {
-  return array[Math.floor(array.length * Math.random())];
+var getRandomElement = function (elements) {
+  return elements[Math.floor(elements.length * Math.random())];
 };
 
 var renderData = function () {
-  var wizardsArray = [];
+  var wizards = [];
 
   for (var i = 0; i < NUMBER_WIZARDS; i++) {
     var wizardObject = {
@@ -31,13 +96,13 @@ var renderData = function () {
       coatColor: getRandomElement(COAT_COLOR),
       eyesColor: getRandomElement(EYES_COLOR)
     };
-    wizardsArray.push(wizardObject);
+    wizards.push(wizardObject);
   }
 
-  return wizardsArray;
+  return wizards;
 };
 
-var wizards = renderData(NUMBER_WIZARDS);
+var renderedWizards = renderData(NUMBER_WIZARDS);
 
 var renderWizard = function (wizard) {
   var wizardElement = wizardTemplate.cloneNode(true);
@@ -54,12 +119,12 @@ var getWizardsFragment = function (wizards) {
 
   for (var j = 0; j < wizards.length; j++) {
 
-  fragment.appendChild(renderWizard(wizards[j]));
+    fragment.appendChild(renderWizard(wizards[j]));
 
   }
- return fragment;
-}
+  return fragment;
+};
 
-listElement.appendChild(getWizardsFragment(wizards));
+listElement.appendChild(getWizardsFragment(renderedWizards));
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
