@@ -29,5 +29,5 @@
     NUMBER_WIZARDS: NUMBER_WIZARDS,
     FIREBALL_COLOR: FIREBALL_COLOR,
     getRandomElement: getRandomElement
-  }
+  };
 })();

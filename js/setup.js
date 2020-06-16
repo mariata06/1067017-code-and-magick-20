@@ -12,7 +12,7 @@
 
   window.setup = {
     userDialog: userDialog
-  }
+  };
 
   // Валидация поля с именем
   userNameInput.addEventListener('invalid', function () {

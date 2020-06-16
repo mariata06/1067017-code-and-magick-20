@@ -40,7 +40,7 @@
       setupDialogElement.style.top = (setupDialogElement.offsetTop - shift.y) + 'px';
       setupDialogElement.style.left = (setupDialogElement.offsetLeft - shift.x) + 'px';
 
-      console.log((setupDialogElement.offsetLeft - shift.x) + 'px');
+      // console.log((setupDialogElement.offsetLeft - shift.x) + 'px');
     };
 
     var onMouseUp = function (upEvt) {
@@ -52,7 +52,7 @@
       if (dragged) {
         var onClickPreventDefault = function (clickEvt) {
           clickEvt.preventDefault();
-          dialogHandle.removeEventListener('click', onClickPreventDefault)
+          dialogHandle.removeEventListener('click', onClickPreventDefault);
         };
         dialogHandle.addEventListener('click', onClickPreventDefault);
       }
