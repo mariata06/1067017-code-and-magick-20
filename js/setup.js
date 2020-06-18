@@ -9,7 +9,7 @@
   var setupWizard = document.querySelector('.setup-wizard');
   var wizardCoat = setupWizard.querySelector('.wizard-coat');
   var wizardEyes = setupWizard.querySelector('.wizard-eyes');
-  var save = setupWizard.querySelector('.setup-submit');
+  // var save = setupWizard.querySelector('.setup-submit');
 
   // Валидация поля с именем
   userNameInput.addEventListener('invalid', function () {
@@ -74,7 +74,7 @@
     }
   });
 
-  userDialog.addEventListener('submit', function(evt) {
+  userDialog.addEventListener('submit', function (evt) {
     evt.preventDefault();
     window.backend.save();
   });
