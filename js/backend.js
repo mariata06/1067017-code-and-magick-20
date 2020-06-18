@@ -1,15 +1,15 @@
 'use strict';
 
 (function () {
-/*
-  var onError = function (message) {
-    console.error(message);
-  };
+  /*
+    var onError = function (message) {
+      console.error(message);
+    };
 
-  var onLoad = function (data) {
-    return data;
-  };
-*/
+    var onLoad = function (data) {
+      return data;
+    };
+  */
   var load = function (onLoad, onError) {
     var URL = 'https://javascript.pages.academy/code-and-magick/data';
     var xhr = new XMLHttpRequest();
@@ -48,9 +48,7 @@
   };
 
   window.backend = {
-    load : load,
-    save: save//,
-   // onLoad: onLoad,
-   // onError : onError
+    load: load,
+    save: save
   };
 })();

@@ -4,7 +4,7 @@
   var listElement = window.setup.userDialog.querySelector('.setup-similar-list');
   var wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
-/*
+/*  
   var renderData = function () {
     var wizards = [];
 
