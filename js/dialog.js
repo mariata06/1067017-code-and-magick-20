@@ -4,11 +4,6 @@
   var START_X_COORDS = '716px';
   var START_Y_COORDS = '80px';
 
-  window.dialog = {
-    START_X_COORDS: START_X_COORDS,
-    START_Y_COORDS: START_Y_COORDS
-  };
-
   var setupDialogElement = document.querySelector('.setup');
   var dialogHandle = setupDialogElement.querySelector('.upload');
 
@@ -39,8 +34,6 @@
 
       setupDialogElement.style.top = (setupDialogElement.offsetTop - shift.y) + 'px';
       setupDialogElement.style.left = (setupDialogElement.offsetLeft - shift.x) + 'px';
-
-      // console.log((setupDialogElement.offsetLeft - shift.x) + 'px');
     };
 
     var onMouseUp = function (upEvt) {
@@ -61,11 +54,10 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
 
-    // console.log(setupDialogElement.style.left);
-
   });
 
-  // setupDialogElement.style.top = 0;
-  // setupDialogElement.style.left = 0;
-
+  window.dialog = {
+    START_X_COORDS: START_X_COORDS,
+    START_Y_COORDS: START_Y_COORDS
+  };
 })();

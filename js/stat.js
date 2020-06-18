@@ -15,18 +15,6 @@
     ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
   };
 
-  var getMaxElement = function (arr) {
-    var maxElement = arr[0];
-
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i] > maxElement) {
-        maxElement = arr[i];
-      }
-    }
-
-    return maxElement;
-  };
-
   var renderTitle = function (ctx, string1, string2) {
     ctx.fillStyle = '#000';
     ctx.font = '16px PT Mono';
@@ -39,7 +27,7 @@
     renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
     renderTitle(ctx, 'Ура вы победили!', 'Список результатов:');
 
-    var maxTime = getMaxElement(times);
+    var maxTime = window.util.getMaxElement(times);
 
     for (var i = 0; i < players.length; i++) {
       ctx.font = '16px PT Mono';
