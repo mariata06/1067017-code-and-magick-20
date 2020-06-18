@@ -9,6 +9,7 @@
   var setupWizard = document.querySelector('.setup-wizard');
   var wizardCoat = setupWizard.querySelector('.wizard-coat');
   var wizardEyes = setupWizard.querySelector('.wizard-eyes');
+  var save = setupWizard.querySelector('.setup-submit');
 
   // Валидация поля с именем
   userNameInput.addEventListener('invalid', function () {
@@ -71,6 +72,11 @@
     if (evt.key === 'Escape' && userNameInput !== document.activeElement) {
       closePopup();
     }
+  });
+
+  userDialog.addEventListener('submit', function(evt) {
+    evt.preventDefault();
+    window.backend.save();
   });
 
   window.setup = {
