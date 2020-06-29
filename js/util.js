@@ -21,6 +21,19 @@
     return elements[Math.floor(elements.length * Math.random())];
   };
 
+  // функция находит максимальный элемент
+  var getMaxElement = function (arr) {
+    var maxElement = arr[0];
+
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] > maxElement) {
+        maxElement = arr[i];
+      }
+    }
+
+    return maxElement;
+  };
+
   window.util = {
     WIZARDS_NAMES: WIZARDS_NAMES,
     WIZARDS_SURNAMES: WIZARDS_SURNAMES,
@@ -28,6 +41,7 @@
     EYES_COLOR: EYES_COLOR,
     NUMBER_WIZARDS: NUMBER_WIZARDS,
     FIREBALL_COLOR: FIREBALL_COLOR,
-    getRandomElement: getRandomElement
+    getRandomElement: getRandomElement,
+    getMaxElement: getMaxElement
   };
 })();

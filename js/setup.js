@@ -9,10 +9,7 @@
   var setupWizard = document.querySelector('.setup-wizard');
   var wizardCoat = setupWizard.querySelector('.wizard-coat');
   var wizardEyes = setupWizard.querySelector('.wizard-eyes');
-
-  window.setup = {
-    userDialog: userDialog
-  };
+  // var save = setupWizard.querySelector('.setup-submit');
 
   // Валидация поля с именем
   userNameInput.addEventListener('invalid', function () {
@@ -49,8 +46,6 @@
 
   var closePopup = function () {
     userDialog.classList.add('hidden');
-    // console.log(window.dialog.x);
-    // console.log(window.dialog.y);
   };
 
   setupOpen.addEventListener('click', function () {
@@ -78,5 +73,14 @@
       closePopup();
     }
   });
+
+  userDialog.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    window.backend.save();
+  });
+
+  window.setup = {
+    userDialog: userDialog
+  };
 
 })();
